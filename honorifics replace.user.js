@@ -13,9 +13,7 @@
 
 (function() {
 
-
     setTimeout(function() {
-
 
         var honorificsreplace = honorifics;
         var totalhonorifics = honorificsreplace.length;
@@ -43,6 +41,7 @@
                 return NodeFilter.FILTER_SKIP;
             }
             },
+            
             false
         );
 
@@ -58,14 +57,8 @@
             txtNode.nodeValue = oldTxt;
         }
 
-
     }, 2000);
-
-
-
-
-
-
+    
 })();
 
 var honorifics = ["([a-z])이 형;$1-ie hyung",
