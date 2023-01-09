@@ -5,7 +5,7 @@
 // @description  RIDI CAN'T STOP ME
 // @author       chujuchuchu
 // @match        https://view.ridibooks.com/books/205*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
+// @icon         https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://ridibooks.com&size=64
 // @updateURL    https://github.com/chujuchuchu/tamperidi/blob/main/jeolsildol%20replace.user.js
 // @downloadURL  https://github.com/chujuchuchu/tamperidi/blob/main/jeolsildol%20replace.user.js
 // @grant        none
@@ -340,5 +340,34 @@ var names = ["정해원,Jeong Haewon",
              "(\w)Bieun,$1비은",
              "명소은,Myung Soeun",
              "소은,Soeun",
-             "(\w)Soeun,$1소은"
+             "(\w)Soeun,$1소은",
+             "최효원,Choi Hyowon",
+             "효원,Hyowon",
+             "(\w)Hyowon,$1효원",
+             "박윤태,Park Yoontae",
+             "윤태,Yoontae",
+             "(\w)Yoontae,$1윤태",
+             "엔젤링,Angelling",
+             "젤링,Gelling",
+             "(\w)Gelling,$1젤링",
+             "장선영,Jang Seonyoung",
+             "선영,Seonyoung",
+             "(\w)Seonyoung,$1선영",
+             "이은석,Lee Eunseok",
+             "은석,Eunseok",
+             "(\w)Eunseok,$1은석",
+             "룩스,Lux",
+             "(\w)Lux,$1룩스",
+             "성적충,Achievement Bug",
+             "홍여름,Hong Yeoreum",
+             "여름 :,Yeoreum :",
+             "여름이 형,Yeoreum-ie hyung",
+             "여름아,Yeoreum-ah",
+             "여름이,Yeoreum이",
+             "여름씨,Yeoreum-ssi",
+             "여름 씨,Yeoreum-ssi",
+             "여름 군,Yeoreum-gun",
+             "여름 형,Yeoreum hyung",
+             "여름의,Yeoreum의",
+
                    ];
