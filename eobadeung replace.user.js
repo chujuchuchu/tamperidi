@@ -5,7 +5,7 @@
 // @description  RIDI CAN'T STOP ME
 // @author       chujuchuchu
 // @match        https://view.ridibooks.com/books/425*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
+// @icon         https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://ridibooks.com&size=64
 // @updateURL    https://github.com/chujuchuchu/tamperidi/blob/main/eobadeung%20replace.user.js
 // @downloadURL  https://github.com/chujuchuchu/tamperidi/blob/main/eobadeung%20replace.user.js
 // @grant        none
@@ -13,9 +13,7 @@
 
 (function() {
 
-
     setTimeout(function() {
-
 
         var namesreplace = names;
         var totalnames = namesreplace.length;
@@ -58,16 +56,9 @@
             txtNode.nodeValue = oldTxt;
         }
 
-
     }, 2000);
 
-
-
-
-
-
 })();
-
 
 var names = ["수혁,Soohyuk",
              "프리야 쿠마리,Priya Kumari",
@@ -265,4 +256,5 @@ var names = ["수혁,Soohyuk",
              "베스,Beth",
              "리즈,Liz",
              "캐새키,Kaesaeki"
-                   ];
+
+            ];
