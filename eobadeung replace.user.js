@@ -6,6 +6,8 @@
 // @author       chujuchuchu
 // @match        https://view.ridibooks.com/books/425*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
+// @updateURL    https://github.com/chujuchuchu/tamperidi/blob/main/eobadeung%20replace.user.js
+// @downloadURL  https://github.com/chujuchuchu/tamperidi/blob/main/eobadeung%20replace.user.js
 // @grant        none
 // ==/UserScript==
 
