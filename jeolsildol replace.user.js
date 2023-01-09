@@ -359,6 +359,6 @@ var names = ["정해원,Jeong Haewon",
              "여름 씨,Yeoreum-ssi",
              "여름 군,Yeoreum-gun",
              "여름 형,Yeoreum hyung",
-             "여름의,Yeoreum의",
+             "여름의,Yeoreum의"
 
             ];
