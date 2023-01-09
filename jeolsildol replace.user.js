@@ -13,9 +13,7 @@
 
 (function() {
 
-
     setTimeout(function() {
-
 
         var namesreplace = names;
         var totalnames = namesreplace.length;
@@ -58,16 +56,9 @@
             txtNode.nodeValue = oldTxt;
         }
 
-
     }, 2000);
 
-
-
-
-
-
 })();
-
 
 var names = ["정해원,Jeong Haewon",
              "민지호,Min Jiho",
@@ -370,4 +361,4 @@ var names = ["정해원,Jeong Haewon",
              "여름 형,Yeoreum hyung",
              "여름의,Yeoreum의",
 
-                   ];
+            ];
