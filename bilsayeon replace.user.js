@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  RIDI CAN'T STOP ME
 // @author       chujuchuchu
-// @match        https://view.ridibooks.com/books/205*
+// @match        https://view.ridibooks.com/books/809*
 // @icon         https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://ridibooks.com&size=64
 // @updateURL    https://github.com/chujuchuchu/tamperidi/blob/main/bilsayeon%20replace.user.js
 // @downloadURL  https://github.com/chujuchuchu/tamperidi/blob/main/bilsayeon%20replace.user.js
