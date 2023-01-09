@@ -41,7 +41,7 @@
                 return NodeFilter.FILTER_SKIP;
             }
             },
-            
+
             false
         );
 
@@ -58,7 +58,7 @@
         }
 
     }, 2000);
-    
+
 })();
 
 var honorifics = ["([a-z])이 형;$1-ie hyung",
@@ -180,7 +180,8 @@ var honorifics = ["([a-z])이 형;$1-ie hyung",
                   "에이 씨;Eyy ssi",
                   "아이 씨;Aiy ssi",
                   "―형~;―Hyung~"
-];
+
+                 ];
 
 
 
