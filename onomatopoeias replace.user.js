@@ -32,7 +32,7 @@
 
             let splittext = onomatopoeiasreplace[i].split(";");
             let comma_0 = ", " + splittext[0] + punctreplace;
-            let comma_1 = ", " + splittext[1].toLowerCase() + punctreplace;
+            let comma_1 = ", " + splittext[1].toLowerCase() + "$1";
             hangulonomatopoeias[i*6] = new RegExp(comma_0, "g");
             romanonomatopoeias[i*6] = comma_1;
 
