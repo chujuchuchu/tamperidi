@@ -46,7 +46,7 @@
             hangulonomatopoeias[i*6+2] = new RegExp(ellipse_nospace_0, "g");
             romanonomatopoeias[i*6+2] = ellipse_nospace_1;
 
-            let punct_space_0 = punctreplace + splittext[0] + punctreplace;
+            let punct_space_0 = punctreplace + " " + splittext[0] + punctreplace;
             let punct_space_1 = "$1 " + splittext[1] + "$2";
             hangulonomatopoeias[i*6+3] = new RegExp(punct_space_0, "g");
             romanonomatopoeias[i*6+3] = punct_space_1
