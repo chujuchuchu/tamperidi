@@ -11,12 +11,22 @@
 // @grant        none
 // ==/UserScript==
 
-(function(){
-    'use strict'
+(function() {
 
-  window.addEventListener('load', () => {
+    window.addEventListener('load', () => {
     addButton('after tl', replaceafter)
     })
+
+    function tempAlert(msg, duration)
+    {
+        var el = document.createElement("div");
+        el.setAttribute("style", "position: fixed; bottom: 16%; left: 4%; background-color: green");
+        el.innerHTML = msg;
+        setTimeout(function(){
+            el.parentNode.removeChild(el);
+        }, duration);
+        document.body.appendChild(el);
+    }
 
     function addButton(text, onclick, cssObj) {
         cssObj = cssObj || {position: 'fixed', bottom: '7%', left:'4%', 'z-index': 3}
@@ -29,6 +39,7 @@
     }
 
     function replaceafter() {
+
         var aftertlreplace = aftertl;
         var totalaftertl = aftertlreplace.length;
 
@@ -39,7 +50,7 @@
         romanaftertl.length = aftertlreplace.length;
 
         for (let i = 0; i < aftertlreplace.length; i++) {
-            if (i == aftertlreplace.length-1) {
+            if (i == 1) {
                 hangulaftertl[i] = "[…]";
                 romanaftertl[i] = "[…";
             }
@@ -50,7 +61,6 @@
                 romanaftertl[i] = splittext[1];
             }
         }
-
 
         var txtWalker = document.createTreeWalker (
             document.body,
@@ -76,6 +86,8 @@
 
             txtNode.nodeValue = oldTxt;
         }
+
+        tempAlert("after replaced", 1000);
     }
 
 
