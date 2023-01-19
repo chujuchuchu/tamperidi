@@ -39,11 +39,18 @@
         romanaftertl.length = aftertlreplace.length;
 
         for (let i = 0; i < aftertlreplace.length; i++) {
-            let splittext = aftertlreplace[i].split(";");
-            let regtext = new RegExp(splittext[0], "g");
-            hangulaftertl[i] = regtext;
-            romanaftertl[i] = splittext[1];
+            if (i == aftertlreplace.length.length-1) {
+                hangulaftertl[i] = "[…]";
+                romanaftertl[i] = "[…";
+            }
+            else {
+                let splittext = aftertlreplace[i].split(";");
+                let regtext = new RegExp(splittext[0], "g");
+                hangulaftertl[i] = regtext;
+                romanaftertl[i] = splittext[1];
+            }
         }
+
 
         var txtWalker = document.createTreeWalker (
             document.body,
@@ -76,7 +83,6 @@
 }());
 
 var aftertl = ["nigga;nom",
-             "[…];[…",
              "hadtily;hastily",
              "Iknow;I know",
              "fortress;These days",
@@ -242,36 +248,36 @@ var aftertl = ["nigga;nom",
                "([a-z]) Maknae;$1 maknae",
                "([a-z]) Siljang;$1 siljang",
                "([a-z]) Sajang;$1 sajang",
-               "([[:punct:]])iced coffee([[:punct:]]);$1Ahh$2",
-               "([[:punct:]])Five([[:punct:]]);$1Ohh$2",
-               "([[:punct:]])after([[:punct:]]);$1Huu$2",
-               "([[:punct:]])under([[:punct:]]);$1Hah$2",
-               "([[:punct:]])ruler([[:punct:]]);$1Then$2",
-               "([[:punct:]])black([[:punct:]]);$1heok$2",
-               "([[:punct:]])flaw([[:punct:]]);$1heu$2",
-               "([[:punct:]])crane([[:punct:]]);$1hak$2",
-               "([[:punct:]])profit([[:punct:]]);$1kiik$2",
-               "([[:punct:]])evil([[:punct:]]);$1ack$2",
-               "([[:punct:]]) iced coffee([[:punct:]]);$1 Ahh$2",
-               "([[:punct:]]) Five([[:punct:]]);$1 Ohh$2",
-               "([[:punct:]]) after([[:punct:]]);$1 Huu$2",
-               "([[:punct:]]) under([[:punct:]]);$1 Hah$2",
-               "([[:punct:]]) ruler([[:punct:]]);$1 Then$2",
-               "([[:punct:]]) black([[:punct:]]);$1 heok$2",
-               "([[:punct:]]) flaw([[:punct:]]);$1 heu$2",
-               "([[:punct:]]) profit([[:punct:]]);$1 kiik$2",
-               "([[:punct:]]) evil([[:punct:]]);$1 ack$2",
-               "([[:punct:]]) crane([[:punct:]]);$1 hak$2",
-               "\r\niced coffee([[:punct:]]);$1Ahh$2",
-               "\r\nFive([[:punct:]]);\r\nOhh$1",
-               "\r\nafter([[:punct:]]);\r\nHuu$1",
-               "\r\nunder([[:punct:]]);\r\nHah$1",
-               "\r\nruler([[:punct:]]);\r\nThen$1",
-               "\r\nblack([[:punct:]]);\r\nheok$1",
-               "\r\nflaw([[:punct:]]);\r\nheu$1",
-               "\r\ncrane([[:punct:]]);\r\nhak$1",
-               "\r\nprofit([[:punct:]]);\r\nkiik$1",
-               "\r\nevil([[:punct:]]);\r\nack$1",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])iced coffee([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1Ahh$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])Five([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1Ohh$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])after([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1Huu$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])under([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1Hah$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])ruler([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1Then$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])black([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1heok$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])flaw([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1heu$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])crane([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1hak$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])profit([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1kiik$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])evil([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1ack$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]) iced coffee([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1 Ahh$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]) Five([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1 Ohh$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]) after([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1 Huu$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]) under([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1 Hah$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]) ruler([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1 Then$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]) black([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1 heok$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]) flaw([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1 heu$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]) profit([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1 kiik$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]) evil([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1 ack$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]) crane([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1 hak$2",
+               "\r\niced coffee([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);$1Ahh$2",
+               "\r\nFive([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);\r\nOhh$1",
+               "\r\nafter([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);\r\nHuu$1",
+               "\r\nunder([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);\r\nHah$1",
+               "\r\nruler([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);\r\nThen$1",
+               "\r\nblack([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);\r\nheok$1",
+               "\r\nflaw([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);\r\nheu$1",
+               "\r\ncrane([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);\r\nhak$1",
+               "\r\nprofit([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);\r\nkiik$1",
+               "\r\nevil([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);\r\nack$1",
                "\r\noh\r\n;\r\nOh.\r\n",
                "\r\nmade him happy\r\n;\r\nMade him happy.\r\n",
                "\r\nTaeshik ahjussi\r\n;\r\nTaeshik ahjussi.\r\n",
@@ -279,18 +285,18 @@ var aftertl = ["nigga;nom",
                "Class ([ABCDEFS]);$1 class",
                "Im([[:space:]]);I'm$1",
                "Hi-Ohh;Hi-Five",
-               "([[:punct:]])i([[:space:]]);$1I$2",
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])i([[:space:]]);$1I$2",
                "hyungwoo;Hyungwoo",
                "hyungjoon;Hyungjoon",
                "Chapters (\d);Chapter $1",
-               "No([[:punct:]])\r\n;No$1 1.\r\n",
+               "No([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])\r\n;No$1 1.\r\n",
                "([[:space:]])i([[:space:]]);$1I$1",
                "([a-z]) T-shirt; $1 t-shirt",
-               "What happen([[:punct:]]);What happened$1",
+               "What happen([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);What happened$1",
                "\r\nI\r\n ([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]);\r\nI $1",
                "\r\nI\r\n([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]);\r\nI $1",
                "\r\nI\n ([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]);\r\nI $1",
                "\r\nI\n([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]);\r\nI $1",
                "([a-z])STier;$1stier",
-               "([[:punct:]])i([[:space:]]);$1I$2"
+               "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])i([[:space:]]);$1I$2"
             ];
