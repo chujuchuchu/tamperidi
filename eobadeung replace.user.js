@@ -255,6 +255,7 @@ var names = ["수혁,Soohyuk",
              "위버,Weaver",
              "베스,Beth",
              "리즈,Liz",
-             "캐새키,Kaesaeki"
+             "캐새키,Kaesaeki",
+             "구원자님,Savior-nim"
 
             ];
