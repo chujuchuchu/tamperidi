@@ -26,7 +26,9 @@
 
         for (let i = 0; i < honorificsreplace.length; i++) {
             let splittext = honorificsreplace[i].split(";");
-            let regtext = new RegExp(splittext[0], "g");
+            let punctreplace = splittext[0].replaceAll("([[:punct:]])","([^A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])");
+            let regtext = new RegExp(punctreplace.replaceAll("(\w)","([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])"), "g");
+
             hangulhonorifics[i] = regtext;
             romanhonorifics[i] = splittext[1];
         }
@@ -131,13 +133,14 @@ var honorifics = ["([a-z])이 형;$1-ie hyung",
                   "혀엉;Hyuung",
                   "선배;sunbae",
                   "도련님;Young Master-nim",
-                  "([[:punct:]])형;$1Hyung",
-                  "형([[:punct:]]);hyung$1",
+                  "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])형;$1Hyung",
+                  "형([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]);hyung$1",
                   ", 형;, hyung",
-                  "\r\n형([[:space:]]);\r\nHyung$1",
+                  "\r\n형 ;\r\nHyung ",
                   "\r\n형이;\r\nHyung이",
-                  "([[:space:]])형([[:space:]]);$1hyung$1",
-                  "([[:punct:]]) 형;$1 Hyung",
+                  " 형 ; hyung ",
+                  "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]]) 형;$1 Hyung",
+                  "([^[A-za-z \uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]])형 ;$1Hyung",
                   "형이;hyung이",
                   "형은;hyung은",
                   "형도;hyung도",
@@ -160,15 +163,15 @@ var honorifics = ["([a-z])이 형;$1-ie hyung",
                   "([a-z]) Ahjussi; $1 ahjussi",
                   "([a-z]) Noona; $1 noona",
                   "형한테;hyung한테",
-                  "대표님;CEO-nim",
-                  "([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])sunbae;$1선배",
-                  "([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])Sunbae;$1선배",
+                  "대표님;Daepyo-nim",
+                  "(\w)sunbae;$1선배",
+                  "(\w)Sunbae;$1선배",
                   "년 hyung이;년 형이",
                   "하이고오;haigooo",
                   "아이고오;aigooo",
                   "하이고;haigoo",
                   "아이고;aigoo",
-                  "([[:space:]])([[:space:]])-yang;$1양",
+                  "  -yang;$1양",
                   "ah-ah;aah",
                   "([aeiouhy])-ah;$1아",
                   "([^aeiouhy])-ya;$1야",
