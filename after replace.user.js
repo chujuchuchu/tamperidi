@@ -56,7 +56,9 @@
             }
             else {
                 let splittext = aftertlreplace[i].split(";");
-                let regtext = new RegExp(splittext[0], "g");
+                let punctreplace = splittext[0].replaceAll("([[:punct:]])","([^A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])");
+                let regtext = new RegExp(punctreplace.replaceAll("(\w)","([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])"), "g");
+
                 hangulaftertl[i] = regtext;
                 romanaftertl[i] = splittext[1];
             }
