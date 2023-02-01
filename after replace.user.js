@@ -5,6 +5,7 @@
 // @description  RIDI AND KKP CAN'T STOP ME
 // @author       chujuchuchu
 // @match        https://view.ridibooks.com/books/*
+// @match        https://page.kakao.com/content/*
 // @icon         https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://ridibooks.com&size=64
 // @updateURL    https://github.com/chujuchuchu/tamperidi/blob/main/after%20replace.user.js
 // @downloadURL  https://github.com/chujuchuchu/tamperidi/blob/main/after%20replace.user.js
