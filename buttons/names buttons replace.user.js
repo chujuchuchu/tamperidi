@@ -47,13 +47,25 @@
 
         for (let i = 0; i < namesreplace.length; i++) {
             let splittext = namesreplace[i].split(",");
-            let regtext = new RegExp(splittext[0], "g");
+            let punctreplace = splittext[0].replaceAll("([[:punct:]])","([^A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])");
+            let regtext = new RegExp(punctreplace.replaceAll("(\w)","([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])"), "g");
+
             hangulnames[i] = regtext;
             romannames[i] = splittext[1];
         }
 
+        var inputNode = null;
+
+        if (document.URL.includes("kakao")) {
+            var shadowNode = document.querySelector("#__next > div > div.flex.w-full.grow.flex-col > div > div.absolute.h-full.w-full > div.mx-auto.flex.h-full.items-center.justify-center.py-\\[10vh\\] > div.h-full.w-full.flex-auto.css-seffmo > div > div")
+            inputNode = shadowNode.shadowRoot.querySelector('div > div');
+        }
+        else {
+            inputNode = document.body;
+        }
+
         var txtWalker = document.createTreeWalker (
-            document.body,
+            inputNode,
             NodeFilter.SHOW_TEXT,
             { acceptNode: function (node) {
                 if (node.nodeValue.trim() ) {
@@ -62,6 +74,7 @@
                 return NodeFilter.FILTER_SKIP;
             }
             },
+
             false
         );
 
@@ -80,7 +93,7 @@
         tempAlert("names replaced", 1000);
     }
 
-    /*setTimeout(function() {
+    setTimeout(function() {
 
         var namesreplace = names;
         var totalnames = namesreplace.length;
@@ -93,13 +106,25 @@
 
         for (let i = 0; i < namesreplace.length; i++) {
             let splittext = namesreplace[i].split(",");
-            let regtext = new RegExp(splittext[0], "g");
+            let punctreplace = splittext[0].replaceAll("([[:punct:]])","([^A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])");
+            let regtext = new RegExp(punctreplace.replaceAll("(\w)","([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])"), "g");
+
             hangulnames[i] = regtext;
             romannames[i] = splittext[1];
         }
 
+        var inputNode = null;
+
+        if (document.URL.includes("kakao")) {
+            var shadowNode = document.querySelector("#__next > div > div.flex.w-full.grow.flex-col > div > div.absolute.h-full.w-full > div.mx-auto.flex.h-full.items-center.justify-center.py-\\[10vh\\] > div.h-full.w-full.flex-auto.css-seffmo > div > div")
+            inputNode = shadowNode.shadowRoot.querySelector('div > div');
+        }
+        else {
+            inputNode = document.body;
+        }
+
         var txtWalker = document.createTreeWalker (
-            document.body,
+            inputNode,
             NodeFilter.SHOW_TEXT,
             { acceptNode: function (node) {
                 if (node.nodeValue.trim() ) {
@@ -108,6 +133,7 @@
                 return NodeFilter.FILTER_SKIP;
             }
             },
+
             false
         );
 
@@ -126,15 +152,6 @@
         tempAlert("names replaced", 1000);
 
 
-    }, 2000);*/
+    }, 2000);
 
 })();
-
-var names = [""
-
-
-                 ];
-
-
-
-
