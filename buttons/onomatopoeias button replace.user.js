@@ -86,8 +86,18 @@
 
         }
 
+        var inputNode = null;
+
+        if (document.URL.includes("kakao")) {
+            var shadowNode = document.querySelector("#__next > div > div.flex.w-full.grow.flex-col > div > div.absolute.h-full.w-full > div.mx-auto.flex.h-full.items-center.justify-center.py-\\[10vh\\] > div.h-full.w-full.flex-auto.css-seffmo > div > div")
+            inputNode = shadowNode.shadowRoot.querySelector('div > div');
+        }
+        else {
+            inputNode = document.body;
+        }
+
         var txtWalker = document.createTreeWalker (
-            document.body,
+            inputNode,
             NodeFilter.SHOW_TEXT,
             { acceptNode: function (node) {
                 if (node.nodeValue.trim() ) {
@@ -166,8 +176,18 @@
 
         }
 
+        var inputNode = null;
+
+        if (document.URL.includes("kakao")) {
+            var shadowNode = document.querySelector("#__next > div > div.flex.w-full.grow.flex-col > div > div.absolute.h-full.w-full > div.mx-auto.flex.h-full.items-center.justify-center.py-\\[10vh\\] > div.h-full.w-full.flex-auto.css-seffmo > div > div")
+            inputNode = shadowNode.shadowRoot.querySelector('div > div');
+        }
+        else {
+            inputNode = document.body;
+        }
+
         var txtWalker = document.createTreeWalker (
-            document.body,
+            inputNode,
             NodeFilter.SHOW_TEXT,
             { acceptNode: function (node) {
                 if (node.nodeValue.trim() ) {
@@ -198,43 +218,69 @@
 
 })();
 
-var onomatopoeias = ["아아아아아악;Aaaaaack",
+var onomatopoeias = ["아야아야아야야야;Aya aya ayaaa",
+                     "푸푸푸푸푸푸풋푸;Pupupupupupupuhpu",
+                     "아아아아아악;Aaaaaack",
+                     "악악악악악악;Ackackackackackack",
+                     "아아아아악;Aaaaack",
                      "으아아아아;Euaaaah",
+                     "으흐흐으윽;Uheuheuuk",
                      "히이이이익;Hiiiiik",
+                     "똑똑똑똑똑;Ddokddokddokddokddok",
+                     "팅팅팅팅팅;Tingtingtingtingting",
+                     "우드드드득;Udududududuk",
+                     "고오오오오;Goooooh",
                      "아아어오;Aauo",
                      "으아아악;Euaaack",
                      "으애애앵;Uweeeng",
                      "으어어엉;Euuuung",
+                     "어어어어;Ooooh",
+                     "하아아앗;Haaaah",
                      "하하호호;Hahahoho",
+                     "흐으으윽;Heuuuk",
                      "흐애애앵;Heueeeng",
+                     "치이이익;Chiiiik",
                      "끄으으;Guuuh",
                      "아아아;Aaah",
                      "아아악;Aaack",
+                     "아아앗;Aaah",
                      "아으으;Auuu",
                      "아으응;Auung",
                      "아이구;Aigoo",
                      "아이쿠;Aiguu",
+                     "에이그;Eiguu",
                      "어어어;Oooh",
+                     "어어엉;Eeeng",
                      "우에엥;Uweeng",
                      "우에헥;Uwehek",
                      "으아아;Uwaah",
                      "으아앙;Uwaang",
                      "으으응;Eunng",
+                     "으으윽;Euuuk",
                      "하아앙;Haaang",
                      "하우으;Hauu",
+                     "흐아압;Hwap",
                      "하으윽;Hauuk",
                      "하으읏;Hauuh",
+                     "하하하;Hahaha",
                      "후우우;Huuu",
+                     "후엉엉;Hueeng",
                      "흐아아;Heuaa",
                      "흐아앙;Heuaang",
+                     "흐으읍;Heuuup",
                      "흐어엉;Heuuung",
+                     "허엉엉;Heonnng",
                      "흐에에;Heueeh",
                      "흐우웁;Heuuup",
-                     "흐우읏;Heuuuh",
+                     "흐우읏;Heoooh",
+                     "흐으읏;Heuuuh",
                      "흐으윽;Heuuuk",
                      "흐으응;Heuuung",
                      "흐후윽;Heuuuk",
+                     "허허허;Heo heo heo",
+                     "흑흑흑;Heukheukheuk",
                      "쏴아아;Shwaah",
+                     "와하하;Wahaha",
                      "똑똑;Knock knock",
                      "아아;Aah",
                      "아악;Aack",
@@ -248,10 +294,13 @@ var onomatopoeias = ["아아아아아악;Aaaaaack",
                      "아응;Aung",
                      "아흐;Aheu",
                      "아흡;Aheub",
-                     "어어;Eoo",
+                     "어어;Ohh",
                      "어엉;Euung",
                      "어으;Uuh",
+                     "아이;Ayy",
+                     "아흑;Aheuk",
                      "어헝;Euhng",
+                     "어억;Eook",
                      "어후;Eohu",
                      "어휴;Uhuu",
                      "어머;Omo",
@@ -262,16 +311,20 @@ var onomatopoeias = ["아아아아아악;Aaaaaack",
                      "우웅;Uung",
                      "우으;Euu",
                      "우응;Uung",
+                     "우윽;Uuk",
                      "우훅;Uhuk",
                      "웨에;Weeh",
                      "으아;Uwah",
                      "으악;Uwak",
+                     "으압;Uwap",
                      "으억;Euok",
                      "으으;Euu",
+                     "으윽;Euuk",
                      "으음;Euum",
                      "으읍;Euup",
                      "으읏;Euu",
                      "으응;Euung",
+                     "으욱;Euwook",
                      "으쿳;Eukeuh",
                      "으큭;Eugkeuk",
                      "으학;Euhak",
@@ -284,6 +337,7 @@ var onomatopoeias = ["아아아아아악;Aaaaaack",
                      "콜록;Cough cough",
                      "크욱;Keuuk",
                      "크으;Keuu",
+                     "크읍;Keuup",
                      "크후;Keuhuu",
                      "크흑;Keuheuk",
                      "크흠;Keuheum",
@@ -306,6 +360,7 @@ var onomatopoeias = ["아아아아아악;Aaaaaack",
                      "흐흥;Heuheung",
                      "후후;Huhu",
                      "흐아;Heua",
+                     "흐앗;Heuah",
                      "흐앙;Heuang",
                      "흐악;Heuack",
                      "흐으;Heuu",
@@ -319,7 +374,11 @@ var onomatopoeias = ["아아아아아악;Aaaaaack",
                      "히극;Higu",
                      "히윽;Heeuk",
                      "히익;Heek",
+                     "크윽;Keuk",
+                     "크흡;Keuheup",
                      "끄윽;Kkeuk",
+                     "쑤욱;Shwook",
+                     "푸하;Puha",
                      "끄;Gguh",
                      "똑;Knock",
                      "멍;Meong",
@@ -360,6 +419,7 @@ var onomatopoeias = ["아아아아아악;Aaaaaack",
                      "핫;Hah",
                      "허;Heo",
                      "헉;Heok",
+                     "헐;Heol",
                      "형;Hyung",
                      "후;Huu",
                      "훅;Huuk",
@@ -373,10 +433,17 @@ var onomatopoeias = ["아아아아아악;Aaaaaack",
                      "힉;Hiik",
                      "힛;Heeh",
                      "푸;Puh",
-                     "흐으읍;Heuuup"
+                     "꺅;Kkyak",
+                     "큭;Keugh",
+                     "쳇;Tch",
+                     "큽;Keub",
+                     "써;Sseo",
+
 
 
                  ];
+
+
 
 
 
