@@ -48,13 +48,25 @@
 
         for (let i = 0; i < honorificsreplace.length; i++) {
             let splittext = honorificsreplace[i].split(";");
-            let regtext = new RegExp(splittext[0], "g");
+            let punctreplace = splittext[0].replaceAll("([[:punct:]])","([^A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])");
+            let regtext = new RegExp(punctreplace.replaceAll("(\w)","([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])"), "g");
+
             hangulhonorifics[i] = regtext;
             romanhonorifics[i] = splittext[1];
         }
 
+        var inputNode = null;
+
+        if (document.URL.includes("kakao")) {
+            var shadowNode = document.querySelector("#__next > div > div.flex.w-full.grow.flex-col > div > div.absolute.h-full.w-full > div.mx-auto.flex.h-full.items-center.justify-center.py-\\[10vh\\] > div.h-full.w-full.flex-auto.css-seffmo > div > div")
+            inputNode = shadowNode.shadowRoot.querySelector('div > div');
+        }
+        else {
+            inputNode = document.body;
+        }
+
         var txtWalker = document.createTreeWalker (
-            document.body,
+            inputNode,
             NodeFilter.SHOW_TEXT,
             { acceptNode: function (node) {
                 if (node.nodeValue.trim() ) {
@@ -83,7 +95,7 @@
 
     }
 
-    /*setTimeout(function() {
+    setTimeout(function() {
         var honorificsreplace = honorifics;
         var totalhonorifics = honorificsreplace.length;
 
@@ -100,8 +112,18 @@
             romanhonorifics[i] = splittext[1];
         }
 
+        var inputNode = null;
+
+        if (document.URL.includes("kakao")) {
+            var shadowNode = document.querySelector("#__next > div > div.flex.w-full.grow.flex-col > div > div.absolute.h-full.w-full > div.mx-auto.flex.h-full.items-center.justify-center.py-\\[10vh\\] > div.h-full.w-full.flex-auto.css-seffmo > div > div")
+            inputNode = shadowNode.shadowRoot.querySelector('div > div');
+        }
+        else {
+            inputNode = document.body;
+        }
+
         var txtWalker = document.createTreeWalker (
-            document.body,
+            inputNode,
             NodeFilter.SHOW_TEXT,
             { acceptNode: function (node) {
                 if (node.nodeValue.trim() ) {
@@ -128,7 +150,7 @@
 
         tempAlert("honorifics replaced", 1000);
 
-    }, 2000);*/
+    }, 4000);
 
 })();
 
@@ -196,7 +218,7 @@ var honorifics = ["([a-z])이 형;$1-ie hyung",
                   "막내;maknae",
                   "피디님;PD-nim",
                   "([a-z]) 선생님; $1 seonsaeng-nim",
-                  "선생님; Seonsaeng-nim",
+                  "선생님;Seonsaeng-nim",
                   "아저씨;Ahjussi",
                   "PD님;PD-nim",
                   "혀엉;Hyuung",
@@ -205,10 +227,11 @@ var honorifics = ["([a-z])이 형;$1-ie hyung",
                   "([[:punct:]])형;$1Hyung",
                   "형([[:punct:]]);hyung$1",
                   ", 형;, hyung",
-                  "\r\n형([[:space:]]);\r\nHyung$1",
+                  "\r\n형 ;\r\nHyung ",
                   "\r\n형이;\r\nHyung이",
-                  "([[:space:]])형([[:space:]]);$1hyung$1",
+                  " 형 ; hyung ",
                   "([[:punct:]]) 형;$1 Hyung",
+                  "([[:punct:]])형;$1Hyung",
                   "형이;hyung이",
                   "형은;hyung은",
                   "형도;hyung도",
@@ -222,14 +245,19 @@ var honorifics = ["([a-z])이 형;$1-ie hyung",
                   "형들;hyung들",
                   "형은;hyung은",
                   "형만;hyung만",
-                  "혀어어어엉;hyuuung",
-                  "\r\n형은;\r\nhyung은",
-                  "hyung([^a-z -.,…“\"이에의을과?‘'’은들도아]);형$1",
-                  "Hyung([^a-z -.,…“\"이에의을과?‘'’은들도아]);형$1",
+                  "형밖;hyung밖",
+                  "혀어어어엉;hyuuuuung",
+                  "혀어엉;hyuuung",
+                  "hyung([^a-z -.,…“\"이에의을과?‘'’은들밖도아]);형$1",
+                  "Hyung([^a-z -.,…“\"이에의을과?‘'’은들밖도아]);형$1",
                   "([^a-zA-Z “\"‘-])hyung;$1형",
                   "([^a-zA-Z “\"‘-])Noona;$1누나",
                   "([a-z]) Ahjussi; $1 ahjussi",
                   "([a-z]) Noona; $1 noona",
+                  "^형([이은도과입의을들은만]);hyung$1",
+                  "^형한테;hyung한테",
+                  "([[:punct:]])형([이은도과입의을들은만]);^hyung$1",
+                  "([[:punct:]])형한테;hyung한테",
                   "형한테;hyung한테",
                   "대표님;CEO-nim",
                   "(\w)sunbae;$1선배",
@@ -239,7 +267,6 @@ var honorifics = ["([a-z])이 형;$1-ie hyung",
                   "아이고오;aigooo",
                   "하이고;haigoo",
                   "아이고;aigoo",
-                  "([[:space:]])([[:space:]])-yang;$1양",
                   "ah-ah;aah",
                   "([aeiouhy])-ah;$1아",
                   "([^aeiouhy])-ya;$1야",
@@ -250,7 +277,16 @@ var honorifics = ["([a-z])이 형;$1-ie hyung",
                   "씨이바아알;FuUuCk",
                   "에이 씨;Eyy ssi",
                   "아이 씨;Aiy ssi",
-                  "―형~;―Hyung~"
+                  "―형~;―Hyung~",
+                  "형인데;hyung인데",
+                  "형보;hyung보",
+                  "형처럼;hyung처럼",
+                  "헐헐헐;heolheolheol",
+                  "어허~이;Oho~y",
+                  "매니저님;Manager-nim",
+                  "매니저 씨;Manager-ssi",
+                  "친구야;chingu-ya",
+
 
                  ];
 
