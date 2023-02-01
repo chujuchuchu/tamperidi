@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         after replace
 // @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  RIDI CAN'T STOP ME
+// @version      0.2
+// @description  RIDI AND KKP CAN'T STOP ME
 // @author       chujuchuchu
 // @match        https://view.ridibooks.com/books/*
 // @icon         https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://ridibooks.com&size=64
@@ -56,9 +56,7 @@
             }
             else {
                 let splittext = aftertlreplace[i].split(";");
-                let punctreplace = splittext[0].replaceAll("([[:punct:]])","([^A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])");
-                let regtext = new RegExp(punctreplace.replaceAll("(\w)","([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])"), "g");
-
+                let regtext = new RegExp(splittext[0], "g");
                 hangulaftertl[i] = regtext;
                 romanaftertl[i] = splittext[1];
             }
@@ -240,7 +238,6 @@ var aftertl = ["nigga;nom",
                "Henry Abbey;Henry's father",
                "Jihyuk Seo;Seo Jihyuk",
 
-
                "([a-z]) Hyung;$1 hyung",
                "([a-z]) Noona;$1 noona",
                "([a-z]) Oppa;$1 oppa",
@@ -255,55 +252,26 @@ var aftertl = ["nigga;nom",
                "([a-z]) Maknae;$1 maknae",
                "([a-z]) Siljang;$1 siljang",
                "([a-z]) Sajang;$1 sajang",
-               "([[:punct:]])iced coffee([[:punct:]]);$1Ahh$2",
-               "([[:punct:]])Five([[:punct:]]);$1Ohh$2",
-               "([[:punct:]])after([[:punct:]]);$1Huu$2",
-               "([[:punct:]])under([[:punct:]]);$1Hah$2",
-               "([[:punct:]])ruler([[:punct:]]);$1Then$2",
-               "([[:punct:]])black([[:punct:]]);$1heok$2",
-               "([[:punct:]])flaw([[:punct:]]);$1heu$2",
-               "([[:punct:]])crane([[:punct:]]);$1hak$2",
-               "([[:punct:]])profit([[:punct:]]);$1kiik$2",
-               "([[:punct:]])evil([[:punct:]]);$1ack$2",
-               "([[:punct:]]) iced coffee([[:punct:]]);$1 Ahh$2",
-               "([[:punct:]]) Five([[:punct:]]);$1 Ohh$2",
-               "([[:punct:]]) after([[:punct:]]);$1 Huu$2",
-               "([[:punct:]]) under([[:punct:]]);$1 Hah$2",
-               "([[:punct:]]) ruler([[:punct:]]);$1 Then$2",
-               "([[:punct:]]) black([[:punct:]]);$1 heok$2",
-               "([[:punct:]]) flaw([[:punct:]]);$1 heu$2",
-               "([[:punct:]]) profit([[:punct:]]);$1 kiik$2",
-               "([[:punct:]]) evil([[:punct:]]);$1 ack$2",
-               "([[:punct:]]) crane([[:punct:]]);$1 hak$2",
-               "\r\niced coffee([[:punct:]]);$1Ahh$2",
-               "\r\nFive([[:punct:]]);\r\nOhh$1",
-               "\r\nafter([[:punct:]]);\r\nHuu$1",
-               "\r\nunder([[:punct:]]);\r\nHah$1",
-               "\r\nruler([[:punct:]]);\r\nThen$1",
-               "\r\nblack([[:punct:]]);\r\nheok$1",
-               "\r\nflaw([[:punct:]]);\r\nheu$1",
-               "\r\ncrane([[:punct:]]);\r\nhak$1",
-               "\r\nprofit([[:punct:]]);\r\nkiik$1",
-               "\r\nevil([[:punct:]]);\r\nack$1",
-               "\r\noh\r\n;\r\nOh.\r\n",
+               "Class ([ABCDEFS])([ABCDEFS]);$1$2 class",
                "Class ([ABCDEFS]);$1 class",
                "Im (\w);I'm $1",
                "Hi-Ohh;Hi-Five",
                "([[:punct:]])i (\w);$1I $2",
-               "hyungwoo;Hyungwoo",
-               "hyungjoon;Hyungjoon",
-               "Chapters (\d);Chapter $1",
-               "No([[:punct:]])\r\n;No$1 1.\r\n",
-               "(\w) i (\w);$1 I $2",
-               "([a-z]) T-shirt; $1 t-shirt",
-               "What happen([[:punct:]]);What happened$1",
-               "\r\nI\r\n ([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]);\r\nI $1",
-               "\r\nI\r\n([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]);\r\nI $1",
-               "\r\nI\n ([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]);\r\nI $1",
-               "\r\nI\n([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]);\r\nI $1",
-               "([a-z])STier;$1stier",
-               "([[:punct:]])i (\w);$1I $2",
+               "hyungwoo,Hyungwoo",
+               "hyungjoon,Hyungjoon",
+               "hyungsik,Hyungsik",
+               "Chapters (\d),Chapter $1",
+               "No([[:punct:]])\r\n,No$1 1.\r\n",
+               " i , I ",
+               "([a-z]) T-shirt, $1 t-shirt",
+               "What happen([[:punct:]]),What happened$1",
+               "\r\nI\r\n (\w),\r\nI $1",
+               "\r\nI\r\n(\w),\r\nI $1",
+               "\r\nI\n (\w),\r\nI $1",
+               "\r\nI\n(\w),\r\nI $1",
+               "([a-z])STier,$1stier",
+               "([[:punct:]])i ,$1I$2",
                "Tongue([[:punct:]]) Hyung,Hy$1 Hyung",
                "tongue([[:punct:]]) Hyung,hy$1 Hyung",
-               "(\w)(\w)(\w)yly;$1$2$3ily"
+               "(\w)(\w)(\w)yly,$1$2$3ily",
             ];
