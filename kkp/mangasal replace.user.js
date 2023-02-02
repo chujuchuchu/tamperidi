@@ -5,7 +5,7 @@
 // @description  KKP CAN'T STOP ME
 // @author       chujuchuchu
 // @match        https://page.kakao.com/content/58038142/viewer/*
-// @icon         https://pbs.twimg.com/profile_images/1614478926566555649/ZkyIo06a_400x400.jpg
+// @icon         https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://page.kakao.com&size=64
 // @updateURL    https://github.com/chujuchuchu/tamperidi/blob/main/kkp/mangasal%20button%20replace.user.js
 // @downloadURL  https://github.com/chujuchuchu/tamperidi/blob/main/kkp/mangasal%20button%20replace.user.js
 // @grant        none
