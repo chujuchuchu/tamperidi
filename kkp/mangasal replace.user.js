@@ -6,6 +6,8 @@
 // @author       chujuchuchu
 // @match        https://page.kakao.com/content/58038142/viewer/*
 // @icon         https://pbs.twimg.com/profile_images/1614478926566555649/ZkyIo06a_400x400.jpg
+// @updateURL    https://github.com/chujuchuchu/tamperidi/blob/main/kkp/mangasal%20button%20replace.user.js
+// @downloadURL  https://github.com/chujuchuchu/tamperidi/blob/main/kkp/mangasal%20button%20replace.user.js
 // @grant        none
 // ==/UserScript==
 
