@@ -24,14 +24,15 @@
         var romannames = [];
         romannames.length = namesreplace.length;
 
-       for (let i = 0; i < namesreplace.length; i++) {
+        for (let i = 0; i < namesreplace.length; i++) {
             let splittext = namesreplace[i].split(",");
             let punctreplace = splittext[0].replaceAll("([[:punct:]])","([^A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])");
             let regtext = new RegExp(punctreplace.replaceAll("(\w)","([A-za-z\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff])"), "g");
 
             hangulnames[i] = regtext;
-            romannames[i] = splittext[1].replaceAll("\\1","$1");
+            romannames[i] = splittext[1];
         }
+
 
         var txtWalker = document.createTreeWalker (
             document.body,
@@ -43,6 +44,7 @@
                 return NodeFilter.FILTER_SKIP;
             }
             },
+
             false
         );
 
@@ -58,7 +60,11 @@
             txtNode.nodeValue = oldTxt;
         }
 
+
+
+
     }, 2000);
+
 
 })();
 
@@ -362,6 +368,7 @@ var names = ["박무현,Park Moohyun",
              "부선장 Kim Jaehee,Vice Captain Kim Jaehee",
              "연구원 Park Moohyun,Resarcher Park Moohyun",
              "허허허,Hahaha",
+
 
 
 
