@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         eobadeung replace
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.3
 // @description  RIDI CAN'T STOP ME
 // @author       chujuchuchu
 // @match        https://view.ridibooks.com/books/425*
